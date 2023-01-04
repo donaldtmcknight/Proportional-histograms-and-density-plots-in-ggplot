@@ -154,7 +154,7 @@ ggplot(df,aes(x=values,fill=id))+
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](figures/unnamed-chunk-2-1.png)<!-- -->
 
 -   This worked, but the defaults are pretty awful
 -   I will add the following arguments and use them throughout
@@ -172,7 +172,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](figures/unnamed-chunk-3-1.png)<!-- -->
 
 -   Just to double check, let’s increase the binwidth to 20
 
@@ -183,7 +183,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](figures/unnamed-chunk-4-1.png)<!-- -->
 
 -   Still works
 -   For clarity, the sum of each group is now 1 (thus the sum of the
@@ -220,7 +220,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](figures/unnamed-chunk-5-1.png)<!-- -->
 
 -   For clarity, the sum of the entire graph is now 1. So the number of
     data points per group affects the results
@@ -327,7 +327,7 @@ ggplot(df,aes(x=values,fill=id))+
   scale_x_continuous(limits=c(0,120))
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](figures/unnamed-chunk-7-1.png)<!-- -->
 
 ### 5.2.2 scales::percent_format()
 
@@ -349,7 +349,7 @@ ggplot(df,aes(x=values,fill=id))+
   scale_y_continuous(labels = scales::percent_format())
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](figures/unnamed-chunk-8-1.png)<!-- -->
 
 -   Obviously, we should not be having bins labeled \>100%
 
@@ -374,7 +374,7 @@ ggplot(df,aes(x=values/10,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](figures/unnamed-chunk-9-1.png)<!-- -->
 
 -   That *looks* like it worked. All the “a” bars sum to 1, and all the
     “b” bars sum to 1.
@@ -387,7 +387,7 @@ ggplot(df,aes(x=values/10,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](figures/unnamed-chunk-10-1.png)<!-- -->
 
 -   For both “a” and “b” the sum of the bars is now 0.5, which is not
     what we want
@@ -401,7 +401,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](figures/unnamed-chunk-11-1.png)<!-- -->
 
 -   So despite being a common answer online, this **does not work** in
     most cases and should not be used
@@ -437,7 +437,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+![](figures/unnamed-chunk-12-1.png)<!-- -->
 
 -   You can prove to yourself that this works by combining it with a
     histogram (see section 7)
@@ -495,7 +495,7 @@ ggplot(df,aes(x=values,fill=id))+
   labs(y="Proportion")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-13-1.png)<!-- -->
+![](figures/unnamed-chunk-13-1.png)<!-- -->
 
 -   You can prove to yourself that this worked by combing it with
     histograms (see section 7)
@@ -544,7 +544,7 @@ p <- ggplot()+
 p
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-14-1.png)<!-- -->
+![](figures/unnamed-chunk-14-1.png)<!-- -->
 
 -   Now we can use the function below to calculate the mean line (dplyr
     is required)
@@ -577,7 +577,7 @@ ggplot()+
   geom_line(mean.density,mapping=aes(x=x,y=2*y),size=2) #note that y is multiplied by 2 because that is the binwidth used above
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](figures/unnamed-chunk-17-1.png)<!-- -->
 
 -   Just to prove that this worked the way we wanted it to, let’s modify
     our data (df2) so that the sample sizes are the same per group
@@ -603,7 +603,7 @@ ggplot()+
 
     ## Warning: Removed 2 rows containing missing values (geom_bar).
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
+![](figures/unnamed-chunk-18-1.png)<!-- -->
 
 -   Note that it is not a 100% perfect match, but that is to be expected
     from smoothed density lines compared to block histograms
@@ -640,7 +640,7 @@ ggplot()+
   theme(panel.grid.major = element_blank(),panel.grid.minor=element_blank(),legend.position="none")
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](figures/unnamed-chunk-19-1.png)<!-- -->
 
 ## 6.2 Things that don’t work
 
@@ -657,7 +657,7 @@ ggplot(df,aes(x=values/10,fill=id))+
   scale_x_continuous(limits=c(0,12))
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-20-1.png)<!-- -->
+![](figures/unnamed-chunk-20-1.png)<!-- -->
 
 -   That deceptively looks like it worked and we just need to rename the
     y axis, but it is an illusion. Or, more accurately, it worked on
@@ -671,7 +671,7 @@ ggplot(df,aes(x=values,fill=id))+
   scale_x_continuous(limits=c(0,120))
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+![](figures/unnamed-chunk-21-1.png)<!-- -->
 
 -   Notice that the shape of the curves has not changed (as expected
     from simply moving the decimal point).
@@ -696,7 +696,7 @@ ggplot(df,aes(x=values,fill=id))+
   scale_x_continuous(limits=c(0,120))
 ```
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-22-1.png)<!-- -->
+![](figures/unnamed-chunk-22-1.png)<!-- -->
 
 -   As you can see, this makes the shape of “a” and “b” look more
     similar than they actually are, because *both* groups now scale from
@@ -732,7 +732,7 @@ ggplot(df,aes(x=values,fill=id))+
 
     ## Warning: Removed 4 rows containing missing values (geom_bar).
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](figures/unnamed-chunk-23-1.png)<!-- -->
 
 ## 7.2 Combine plots where all data sums to 1
 
@@ -751,4 +751,4 @@ ggplot(df,aes(x=values,fill=id))+
 
     ## Warning: Removed 4 rows containing missing values (geom_bar).
 
-![](Tutorial_git_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](figures/unnamed-chunk-24-1.png)<!-- -->
