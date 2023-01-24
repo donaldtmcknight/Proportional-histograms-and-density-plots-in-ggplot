@@ -146,10 +146,13 @@ library(scales) #version 1.1.1 this is only needed to illustrate one of the faul
 -   **Solution:** add aes(y=stat(width\*density)) in geom_histogram
 -   This will calculate the proportions per group
 -   First I am going to show it using only the strictly necessary code
+    -   Note that position="identity" is necessary for the histograms anytime that groups overlap.
+    -   Thus, it is not necessary for these examples, but I have included it to avoid confusion, and recommend defaulting to including it.
+    -   It does not appear necessary for geom_density       
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(aes(y=stat(width*density)))
+  geom_histogram(position="identity",aes(y=stat(width*density)))
 ```
 
     ## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
@@ -167,7 +170,7 @@ ggplot(df,aes(x=values,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=10,boundary=0,alpha=0.5,color="black",aes(y=stat(width*density)))+
+  geom_histogram(position="identity",binwidth=10,boundary=0,alpha=0.5,color="black",aes(y=stat(width*density)))+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
 ```
@@ -178,7 +181,7 @@ ggplot(df,aes(x=values,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=20,boundary=0,alpha=0.5,color="black",aes(y=stat(width*density)))+
+  geom_histogram(position="identity",binwidth=20,boundary=0,alpha=0.5,color="black",aes(y=stat(width*density)))+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
 ```
@@ -215,7 +218,7 @@ ggplot(df,aes(x=values,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=10,boundary=0,alpha=0.5,color="black",aes(y=..count../sum(..count..)))+
+  geom_histogram(position="identity",binwidth=10,boundary=0,alpha=0.5,color="black",aes(y=..count../sum(..count..)))+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
 ```
@@ -323,7 +326,7 @@ ggplot_build(p)$data
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=10,boundary=0,alpha=0.5,color="black")+
+  geom_histogram(position="identity",binwidth=10,boundary=0,alpha=0.5,color="black")+
   scale_x_continuous(limits=c(0,120))
 ```
 
@@ -343,7 +346,7 @@ ggplot(df,aes(x=values,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=10,boundary=0,alpha=0.5,color="black")+
+  geom_histogram(position="identity",binwidth=10,boundary=0,alpha=0.5,color="black")+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")+
   scale_y_continuous(labels = scales::percent_format())
@@ -369,7 +372,7 @@ ggplot(df,aes(x=values,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values/10,fill=id))+
-  geom_histogram(binwidth=1,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
+  geom_histogram(position="identity",binwidth=1,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
   scale_x_continuous(limits=c(0,12))+
   labs(y="Proportion")
 ```
@@ -382,7 +385,7 @@ ggplot(df,aes(x=values/10,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values/10,fill=id))+
-  geom_histogram(binwidth=2,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
+  geom_histogram(position="identity",binwidth=2,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
   scale_x_continuous(limits=c(0,12))+
   labs(y="Proportion")
 ```
@@ -396,7 +399,7 @@ ggplot(df,aes(x=values/10,fill=id))+
 
 ``` r
 ggplot(df,aes(x=values,fill=id))+
-  geom_histogram(binwidth=10,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
+  geom_histogram(position="identity",binwidth=10,boundary=0,alpha=0.5,aes(y=..density..),color="black")+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
 ```
@@ -724,7 +727,7 @@ ggplot(df,aes(x=values,fill=id))+
 ``` r
 ggplot(df,aes(x=values,fill=id))+
   #histogram portion
-  geom_histogram(binwidth=10,alpha=0.5,color="black",mapping=aes(y=stat(width*density)))+
+  geom_histogram(position="identity",binwidth=10,alpha=0.5,color="black",mapping=aes(y=stat(width*density)))+
   geom_density(size=2,alpha=0,mapping=aes(y=10*..density..,color=id))+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
@@ -743,7 +746,7 @@ ggplot(df,aes(x=values,fill=id))+
 ``` r
 ggplot(df,aes(x=values,fill=id))+
   #histogram portion
-  geom_histogram(binwidth=10,alpha=0.5,color="black",mapping=aes(y=..count../sum(..count..)))+
+  geom_histogram(position="identity",binwidth=10,alpha=0.5,color="black",mapping=aes(y=..count../sum(..count..)))+
   geom_density(size=2,alpha=0,mapping=aes(y=10*..density..*get.props(df$id),color=id))+
   scale_x_continuous(limits=c(0,120))+
   labs(y="Proportion")
