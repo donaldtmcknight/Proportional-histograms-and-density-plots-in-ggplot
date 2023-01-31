@@ -576,7 +576,7 @@ mean.density <- get.mean.density(p=p,n.groups=4)
 ``` r
 ggplot()+
   geom_density(df2,bw=1,alpha=0.5,color="black",mapping=aes(x=values,fill=id,y=2*..density..))+ #binwidth = 2
-  scale_x_continuous(limits=c(85,105))+
+  scale_x_continuous(limits=c(80,110))+
   labs(y="Proportion")+
   geom_line(mean.density,mapping=aes(x=x,y=2*y),size=2) #note that y is multiplied by 2 because that is the binwidth used above
 ```
