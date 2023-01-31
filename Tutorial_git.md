@@ -531,7 +531,7 @@ ggplot(df,aes(x=values,fill=id))+
 
     -   **NOTE1** you must multiply the y values by the binwidth (see
         earlier code) in geom_line for this to plot correctly
-    -   **NOTE2** make sure the range of x values on the simplified graph extends beyond the range of values present or else the mean line may not be calculated correctly
+    -   **NOTE2** make sure the range of x values on the simplified graph extends beyond the range of x values present in the data or else the mean line may not be calculated correctly (you can adjust the x axis to whatever values you want in the final plot)
 -   I have provided the function get.mean.density to simplify this
 -   First let’s make our starting graph
 -   I’m going to use a different data set to demonstrate this
@@ -576,7 +576,7 @@ mean.density <- get.mean.density(p=p,n.groups=4)
 ``` r
 ggplot()+
   geom_density(df2,bw=1,alpha=0.5,color="black",mapping=aes(x=values,fill=id,y=2*..density..))+ #binwidth = 2
-  scale_x_continuous(limits=c(80,110))+
+  scale_x_continuous(limits=c(85,105))+
   labs(y="Proportion")+
   geom_line(mean.density,mapping=aes(x=x,y=2*y),size=2) #note that y is multiplied by 2 because that is the binwidth used above
 ```
