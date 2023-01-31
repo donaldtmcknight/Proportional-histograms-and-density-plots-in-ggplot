@@ -529,8 +529,9 @@ ggplot(df,aes(x=values,fill=id))+
     3.  Average those data
     4.  Add them back into the graph using geom_line()
 
-    -   **NOTE** you must multiply the y values by the binwidth (see
+    -   **NOTE1** you must multiply the y values by the binwidth (see
         earlier code) in geom_line for this to plot correctly
+    -   **NOTE2** make sure the range of x values on the simplified graph extends beyond the range of values present or else the mean line may not be calculated correctly
 -   I have provided the function get.mean.density to simplify this
 -   First let’s make our starting graph
 -   I’m going to use a different data set to demonstrate this
